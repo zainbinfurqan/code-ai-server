@@ -11,15 +11,30 @@ import { InterviewModule } from './interview/interview.module';
 import { BlogsModule } from './blogs/blogs.module';
 import { AuthModule } from './auth/auth.module';
 import { logger } from './logger.middleware';
+import { AddtocartModule } from './addtocart/addtocart.module';
+import { CheckoutController } from './checkout/checkout.controller';
+import { CheckoutModule } from './checkout/checkout.module';
+import { PaymentController } from './payment/payment.controller';
+import { PaymentModule } from './payment/payment.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
-  imports: [MongooseModule.forRoot('mongodb+srv://zainahmed199524:zwu5b9ESI8uGUJRh@cluster0.7esbzyq.mongodb.net/'), AuthModule, NotificationModule , InterviewModule, BlogsModule],
-  controllers: [AppController],
+  imports: [
+  MongooseModule.forRoot('mongodb+srv://zainahmed199524:zwu5b9ESI8uGUJRh@cluster0.7esbzyq.mongodb.net/'), 
+  AuthModule, 
+  NotificationModule, 
+  InterviewModule, 
+  BlogsModule, 
+  AddtocartModule, 
+  CheckoutModule, 
+  PaymentModule, 
+  OrdersModule
+],
+  controllers: [AppController, CheckoutController, PaymentController],
   providers: [AppService,],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    
     consumer
       .apply(logger)
       .forRoutes('Blogs');

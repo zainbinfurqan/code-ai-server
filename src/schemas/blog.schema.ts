@@ -3,7 +3,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
-export type BlogDocument = HydratedDocument<Blog>;
+// export type BlogDocument = HydratedDocument<Blog>;
 
 @Schema()
 export class Blog {
@@ -26,7 +26,7 @@ export class Blog {
   likes: number;
 
   @Prop()
-  comments: {}[];
+  comments: [];
 
 }
 

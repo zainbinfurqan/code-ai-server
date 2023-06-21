@@ -1,31 +1,36 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Blog } from 'src/schemas/blog.schema';
+import { BlogsService } from 'src/services/blogs.service';
 
 @Controller('blogs')
 export class BlogsController {
 
+    constructor(private blogService:BlogsService){}
+
     @Get()
-    getBlogs(): string {
-        return 'This action returns all cats';
+    async  getBlogs(): Promise<Blog[]> {
+        return await this.blogService.getBlogs();
     }
 
     @Get(':id')
-    getBlogById(): string {
-        return 'This action returns all cats';
+    async getBlogById(@Param('id') id: string):  Promise<Blog>  {
+        return await this.blogService.getBlogById(id);
     }
 
     @Post()
-    CreateBlog(): string {
-        return 'This action returns all cats';
+   async CreateBlog(@Body() body: any):  Promise<Blog> {
+        return await this.blogService.createBlog(body);
     }
 
     @Put(':id')
-    approveBlogById(): string {
-        return 'This action returns all cats';
+   async approveBlogById(@Param('id') id: string, @Body() body: any): Promise<Blog> {
+        return await this.blogService.updateBlogById(id, body);
     }
 
     @Delete()
-    deleteBlog(): string {
-        return 'This action returns all cats';
+    async  deleteBlog(@Param('id')id : string):  Promise<Blog> {
+        return await this.blogService.deleteBlogById(id);
+        
     }
 
 }
