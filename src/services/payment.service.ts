@@ -1,12 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { User } from '../schemas/user.schema';
+import { Payment } from '../schemas/payment.schema';
 import mongoose, { Model } from 'mongoose';
 
 
 @Injectable()
 export class PaymentService {
 
-constructor(@InjectModel(User.name) private userModel: mongoose.Model<User>) {}
+constructor(@InjectModel(Payment.name) private userModel: mongoose.Model<Payment>) {}
 
+async payment(): Promise<string> {
+    try {
+       return "payment"
+    } catch (error) {
+        console.log("error",error)
+    }
+}
 }

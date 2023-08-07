@@ -17,6 +17,7 @@ import { CheckoutModule } from './checkout/checkout.module';
 import { PaymentController } from './payment/payment.controller';
 import { PaymentModule } from './payment/payment.module';
 import { OrdersModule } from './orders/orders.module';
+import { OrdersController } from './orders/orders.controller';
 
 @Module({
   imports: [
@@ -30,7 +31,7 @@ import { OrdersModule } from './orders/orders.module';
   PaymentModule, 
   OrdersModule
 ],
-  controllers: [AppController, CheckoutController, PaymentController],
+  controllers: [AppController, CheckoutController, PaymentController,OrdersController],
   providers: [AppService,],
 })
 export class AppModule {
