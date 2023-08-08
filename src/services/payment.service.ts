@@ -9,11 +9,21 @@ export class PaymentService {
 
 constructor(@InjectModel(Payment.name) private userModel: mongoose.Model<Payment>) {}
 
-async payment(): Promise<string> {
+async initiatePayment(): Promise<string> {
     try {
-       return "payment"
+       return "initiatePayment"
     } catch (error) {
         console.log("error",error)
     }
 }
+
+async confirmPayment(): Promise<string> {
+    try {
+       return "confirmPayment"
+    } catch (error) {
+        console.log("error",error)
+    }
+}
+
+
 }

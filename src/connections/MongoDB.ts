@@ -5,12 +5,11 @@ const DBConnection = async ()=>{
     try {
         let client;
         let clientPromise;
-
         client = new MongoClient(uri)
         console.log(client)
         global._mongoClientPromise = await client.connect()
         clientPromise = global._mongoClientPromise
-        console.log("clientPromise",clientPromise)
+        // console.log("clientPromise",clientPromise)
         return clientPromise
         
     } catch (error) {

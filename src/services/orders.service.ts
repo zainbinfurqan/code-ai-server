@@ -9,12 +9,12 @@ export class OrdersService {
 
 constructor(@InjectModel(Order.name) private userModel: mongoose.Model<Order>) {}
 
- async placeOrder(): Promise<string> {
-    try {
-       return "order"
-    } catch (error) {
-        console.log("error",error)
+    async confirmOrder(): Promise<string> {
+        try {
+            return "confirmOrder"
+        } catch (error) {
+            console.log("error",error)
+        }
     }
-}
 
 }

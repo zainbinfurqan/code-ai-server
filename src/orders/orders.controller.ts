@@ -6,7 +6,7 @@ export class OrdersController {
     constructor(private ordersService:OrdersService){}
 
     @Post()
-    login(): Promise<string>{
-        return this.ordersService.placeOrder();
+    confirmOrder(): Promise<string>{
+        return this.ordersService.confirmOrder();
     }
 }

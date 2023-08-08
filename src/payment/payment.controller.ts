@@ -6,7 +6,13 @@ export class PaymentController {
     constructor(private paymentService:PaymentService){}
 
     @Post()
-    login(): Promise<string>{
-        return this.paymentService.payment();
+    initiatePayment(): Promise<string>{
+        return this.paymentService.initiatePayment();
     }
+
+    @Post()
+    confirmPayment(): Promise<string>{
+        return this.paymentService.confirmPayment();
+    }
+
 }

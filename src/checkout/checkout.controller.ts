@@ -6,7 +6,13 @@ export class CheckoutController {
     constructor(private checkoutService:CheckoutService){}
 
     @Post()
-    checkout(): Promise<string>{
-        return this.checkoutService.checkout();
+    updateCart(): Promise<string>{
+        return this.checkoutService.updateCart();
     }
+
+    @Post()
+    getCart(): Promise<string>{
+        return this.checkoutService.getCart();
+    }
+
 }
