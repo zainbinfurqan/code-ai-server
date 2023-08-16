@@ -18,6 +18,11 @@ import { PaymentController } from './payment/payment.controller';
 import { PaymentModule } from './payment/payment.module';
 import { OrdersModule } from './orders/orders.module';
 import { OrdersController } from './orders/orders.controller';
+import { CoursesModule } from './courses/courses.module';
+import { CoursesController } from './courses/courses.controller';
+import { SearchService } from './search/search.service';
+import { SearchController } from './search/search.controller';
+import { SearchModule } from './search/search.module';
 
 @Module({
   imports: [
@@ -29,10 +34,10 @@ import { OrdersController } from './orders/orders.controller';
   AddtocartModule, 
   CheckoutModule, 
   PaymentModule, 
-  OrdersModule
+  OrdersModule, CoursesModule, SearchModule
 ],
-  controllers: [AppController, CheckoutController, PaymentController,OrdersController],
-  providers: [AppService,],
+  controllers: [AppController, CheckoutController,CoursesController, PaymentController,OrdersController, SearchController],
+  providers: [AppService, SearchService,],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
