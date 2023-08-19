@@ -20,12 +20,15 @@ import { OrdersModule } from './orders/orders.module';
 import { OrdersController } from './orders/orders.controller';
 import { CoursesModule } from './courses/courses.module';
 import { CoursesController } from './courses/courses.controller';
-import { SearchService } from './search/search.service';
 import { SearchController } from './search/search.controller';
 import { SearchModule } from './search/search.module';
+import { MulterModule } from '@nestjs/platform-express';
+import { AppGateway } from './app.gateway';
+import { IoAdapter } from '@nestjs/platform-socket.io';
 
 @Module({
   imports: [
+    IoAdapter,
   MongooseModule.forRoot('mongodb+srv://zainahmed199524:zwu5b9ESI8uGUJRh@cluster0.7esbzyq.mongodb.net/'), 
   AuthModule, 
   NotificationModule, 
@@ -34,10 +37,14 @@ import { SearchModule } from './search/search.module';
   AddtocartModule, 
   CheckoutModule, 
   PaymentModule, 
-  OrdersModule, CoursesModule, SearchModule
+  OrdersModule, CoursesModule, SearchModule,
+  MulterModule.register({
+    dest: './uploads', // Destination folder for uploaded files
+  }),
 ],
+
   controllers: [AppController, CheckoutController,CoursesController, PaymentController,OrdersController, SearchController],
-  providers: [AppService, SearchService,],
+  providers: [AppService,AppGateway],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {

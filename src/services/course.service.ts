@@ -11,12 +11,7 @@ constructor(@InjectModel(Course.name) private courseModel: mongoose.Model<Course
 
     addCourse(): string {
     try {
-        // const createdUser = new this.userModel({
-        //     fullName:'zain',
-        //     email: 'zain@gmail.com'
-        // });
-        // return createdUser.save();
-        return '';
+        return 'addCourse';
     } catch (error) {
         console.log("error",error)
     }
